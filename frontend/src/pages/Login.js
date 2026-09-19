@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, Button, Card, Form, Input, Space, Typography, message } from 'antd';
+import { Alert, Button, Card, Form, Input, Space, Typography } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { login } from '../services/api';
 
@@ -15,9 +15,6 @@ function Login({ onLogin }) {
     try {
       const data = await login(values);
       localStorage.setItem('token', data.token);
-      if (data.requirePasswordChange) {
-        message.warning('检测到默认密码，需先完成改密后才能继续使用');
-      }
       onLogin(data.user, { requirePasswordChange: Boolean(data.requirePasswordChange) });
     } catch (err) {
       setError(err.response?.data?.error || '登录失败，请稍后重试');

@@ -220,42 +220,6 @@ const touchLastLogin = (id) => {
   }
 };
 
-const getUserLockState = (user) => {
-  if (!user?.lockedUntil) {
-    return { locked: false, remainingSeconds: 0 };
-  }
-  const remain = Math.ceil((new Date(user.lockedUntil).getTime() - Date.now()) / 1000);
-  if (remain <= 0) {
-    user.lockedUntil = null;
-    user.failedLoginAttempts = 0;
-    persistState();
-    return { locked: false, remainingSeconds: 0 };
-  }
-  return { locked: true, remainingSeconds: remain };
-};
-
-const recordLoginFailure = (user, maxAttempts, lockMinutes) => {
-  if (!user) {
-    return { locked: false, attempts: 0, remainingSeconds: 0 };
-  }
-
-  const cap = Math.max(Number(maxAttempts) || 5, 3);
-  const mins = Math.max(Number(lockMinutes) || 15, 1);
-  user.failedLoginAttempts = Number(user.failedLoginAttempts || 0) + 1;
-  let locked = false;
-  let remainingSeconds = 0;
-
-  if (user.failedLoginAttempts >= cap) {
-    user.lockedUntil = new Date(Date.now() + mins * 60 * 1000).toISOString();
-    user.failedLoginAttempts = 0;
-    locked = true;
-    remainingSeconds = mins * 60;
-  }
-
-  persistState();
-  return { locked, attempts: Number(user.failedLoginAttempts || 0), remainingSeconds };
-};
-
 const isUsingDefaultAdminPassword = async (user, plainPassword) => {
   if (user?.username !== 'admin') {
     return false;
@@ -491,8 +455,6 @@ module.exports = {
   verifyUserPassword,
   createUser,
   touchLastLogin,
-  getUserLockState,
-  recordLoginFailure,
   getFinanceSummary,
   addFinanceTransaction,
   getReportSummary,

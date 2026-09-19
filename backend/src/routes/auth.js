@@ -6,51 +6,9 @@ const { sequelize, Sequelize, useRealDb } = require('../config/database');
 const store = require('../data/mockStore');
 
 const router = express.Router();
-const lockMaxAttempts = Math.max(Number(process.env.ACCOUNT_LOCK_MAX_ATTEMPTS) || 5, 3);
-const lockMinutes = Math.max(Number(process.env.ACCOUNT_LOCK_MINUTES) || 15, 1);
 const jwtIssuer = process.env.JWT_ISSUER || 'finance-system';
 const jwtAudience = process.env.JWT_AUDIENCE || 'finance-desktop';
 const allowPublicRegister = process.env.ALLOW_PUBLIC_REGISTER === 'true';
-
-// MySQL 模式下的登录失败跟踪（服务重启后重置）
-const mysqlLockMap = new Map();
-
-const getMysqlLockState = (username) => {
-  const entry = mysqlLockMap.get(username);
-  if (!entry || !entry.lockedUntil) {
-    return { locked: false, remainingSeconds: 0 };
-  }
-  const remain = Math.ceil((entry.lockedUntil - Date.now()) / 1000);
-  if (remain <= 0) {
-    mysqlLockMap.delete(username);
-    return { locked: false, remainingSeconds: 0 };
-  }
-  return { locked: true, remainingSeconds: remain };
-};
-
-const recordMysqlLoginFailure = (username) => {
-  let entry = mysqlLockMap.get(username);
-  if (!entry) {
-    entry = { attempts: 0, lockedUntil: null };
-  }
-  entry.attempts += 1;
-  if (entry.attempts >= lockMaxAttempts) {
-    entry.lockedUntil = Date.now() + lockMinutes * 60 * 1000;
-    entry.attempts = 0;
-  }
-  mysqlLockMap.set(username, entry);
-
-  const locked = entry.lockedUntil && entry.lockedUntil > Date.now();
-  return {
-    locked,
-    attempts: entry.attempts,
-    remainingSeconds: locked ? Math.ceil((entry.lockedUntil - Date.now()) / 1000) : 0,
-  };
-};
-
-const clearMysqlLock = (username) => {
-  mysqlLockMap.delete(username);
-};
 
 const { authenticateToken } = require('../middleware/auth');
 
@@ -79,50 +37,18 @@ router.post(
       let validPassword = false;
 
       if (useRealDb && sequelize) {
-        const mysqlLockState = getMysqlLockState(username);
-        if (mysqlLockState.locked) {
-          return res.status(423).json({
-            error: `账号已临时锁定，请 ${Math.ceil(mysqlLockState.remainingSeconds / 60)} 分钟后重试`,
-          });
-        }
-
         const users = await sequelize.query(
           'SELECT * FROM users WHERE username = ? AND status = 1',
           { replacements: [username], type: Sequelize.QueryTypes.SELECT }
         );
         user = users[0] || null;
         validPassword = Boolean(user) && (await bcrypt.compare(password, user.password_hash));
-
-        if (!validPassword && user) {
-          const lockResult = recordMysqlLoginFailure(username);
-          if (lockResult.locked) {
-            return res.status(423).json({
-              error: `密码连续错误，账号已锁定 ${Math.ceil(lockResult.remainingSeconds / 60)} 分钟`,
-            });
-          }
-        }
       } else {
         user = store.findUserByUsername(username);
-        if (user) {
-          const lockState = store.getUserLockState(user);
-          if (lockState.locked) {
-            return res.status(423).json({
-              error: `账号已临时锁定，请 ${Math.ceil(lockState.remainingSeconds / 60)} 分钟后重试`,
-            });
-          }
-        }
         validPassword = Boolean(user) && (await store.verifyUserPassword(user, password));
       }
 
       if (!user || !validPassword) {
-        if (!useRealDb && user) {
-          const lockResult = store.recordLoginFailure(user, lockMaxAttempts, lockMinutes);
-          if (lockResult.locked) {
-            return res.status(423).json({
-              error: `密码连续错误，账号已锁定 ${Math.ceil(lockResult.remainingSeconds / 60)} 分钟`,
-            });
-          }
-        }
         return res.status(401).json({ error: '用户名或密码错误' });
       }
 
@@ -143,7 +69,6 @@ router.post(
       );
 
       if (useRealDb && sequelize) {
-        clearMysqlLock(username);
         await sequelize.query('UPDATE users SET last_login_at = NOW() WHERE id = ?', {
           replacements: [user.id],
         });

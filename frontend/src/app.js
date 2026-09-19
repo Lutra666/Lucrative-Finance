@@ -122,6 +122,12 @@ function AppContent() {
     setThemeTransition(null);
   }, []);
 
+  // 关闭默认密码提示：清除标记，本次登录内不再出现
+  const handleDismissPasswordNotice = () => {
+    localStorage.removeItem('requirePasswordChange');
+    setRequirePasswordChange(false);
+  };
+
   const handleForceChangePassword = async () => {
     try {
       setForceChangeError('');
@@ -350,17 +356,14 @@ function AppContent() {
                 </MainLayout>
                 <Modal
                   open={requirePasswordChange}
-                  title="首次登录请先修改密码"
-                  closable={false}
-                  maskClosable={false}
-                  keyboard={false}
+                  title="当前正在使用默认密码"
                   okText="确认修改并重新登录"
-                  cancelButtonProps={{ style: { display: 'none' } }}
                   okButtonProps={{ loading: changingPassword }}
                   onOk={handleForceChangePassword}
+                  onCancel={handleDismissPasswordNotice}
                 >
                   <p style={{ marginBottom: 12, color: 'var(--text-secondary, #6b6b75)' }}>
-                    为保证数据安全，默认密码账户必须先改密后再继续使用系统。
+                    为保证数据安全，建议尽快修改默认密码。你也可以关闭本提示，稍后在系统中修改。
                   </p>
                   {forceChangeError ? (
                     <Alert type="error" showIcon message={forceChangeError} style={{ marginBottom: 12 }} />

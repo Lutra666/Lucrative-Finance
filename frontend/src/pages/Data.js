@@ -198,8 +198,6 @@ export default function Data({ developerMode = false }) {
                 <List
                   size="small"
                   dataSource={[
-                    '默认密码登录后会强制改密。',
-                    '连续密码错误达到阈值后，账号会临时锁定。',
                     '敏感字段已加密落盘，备份带签名校验。',
                     '建议配置 SECONDARY_BACKUP_DIR 做异地备份。',
                   ]}

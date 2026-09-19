@@ -74,18 +74,21 @@ describe('GET /api/auth/profile', () => {
   });
 });
 
-describe('POST /api/auth/login — lockout', () => {
-  it('locks account after too many failed attempts', async () => {
-    const maxAttempts = 5;
-    for (let i = 0; i < maxAttempts - 1; i++) {
-      await request(app)
+describe('POST /api/auth/login — 无锁定', () => {
+  it('连续多次密码错误仍返回 401，不锁定账号', async () => {
+    const attempts = 6;
+    for (let i = 0; i < attempts; i++) {
+      const res = await request(app)
         .post('/api/auth/login')
         .send({ username: 'admin', password: 'wrong' });
+      expect(res.status).toBe(401);
     }
+
+    // 关键断言：失败若干次后正确密码仍能登录，证明账号未被锁定
     const res = await request(app)
       .post('/api/auth/login')
-      .send({ username: 'admin', password: 'wrong' });
-    expect(res.status).toBe(423);
-    expect(res.body.error).toContain('锁定');
+      .send({ username: 'admin', password: 'test123' });
+    expect(res.status).toBe(200);
+    expect(res.body.token).toBeTruthy();
   });
 });

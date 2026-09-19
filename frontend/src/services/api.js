@@ -24,8 +24,6 @@ api.interceptors.response.use(
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       message.warning('登录状态失效，请重新登录');
-    } else if (status === 423) {
-      message.warning(serverError || '账号已被临时锁定，请稍后重试');
     } else if (status === 429) {
       message.warning('请求频率过高，请稍后重试');
     } else if (!error?.response) {
