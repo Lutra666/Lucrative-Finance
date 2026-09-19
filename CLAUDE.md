@@ -56,7 +56,7 @@ This builds the frontend, installs backend production deps, then runs `electron-
 
 **Tests:**
 ```bash
-cd backend && npm test   # Jest is configured, but no actual test files exist yet
+cd backend && npm test   # tests live in backend/src/__tests__/ (auth.test.js, orderHelpers.test.js)
 ```
 
 ## Architecture
@@ -100,7 +100,7 @@ The frontend's `package.json` sets `"proxy": "http://127.0.0.1:3001"` for CRA de
 
 - **JWT:** Tokens are signed with `HS256` and validated against `issuer` and `audience`.
 - **Rate limiting:** General requests are limited per IP. Login attempts (`/api/auth/login`) have a separate, stricter limit. In development, localhost requests are skipped.
-- **Account lockout:** Configurable via `ACCOUNT_LOCK_MAX_ATTEMPTS` and `ACCOUNT_LOCK_MINUTES`.
+- **No account lockout:** Repeated failed logins always return `401`; the account is never locked. Removed in v1.0.11 along with the `ACCOUNT_LOCK_*` env vars.
 - **Production hardening:** If `NODE_ENV=production`, the server refuses to start if `JWT_SECRET` is empty or set to the default placeholder.
 - **Admin-only routes:** Audit logs, diagnostics, and backup restore require `role === 'admin'`.
 - **Electron:** `webSecurity: true`, `contextIsolation: true`, `nodeIntegration: false`. Navigation to external URLs is blocked; new-window requests are denied.

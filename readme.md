@@ -10,11 +10,12 @@
 
 | 版本 | 日期 | 下载 |
 |------|------|------|
-| **v1.0.10** (最新) | 2026-05-15 | [Aolong Finance System Setup 1.0.10.exe](https://github.com/Lutra666/new/releases/tag/v1.0.10) |
+| **v1.0.11** (最新) | 2026-09-20 | [Aolong Finance System Setup 1.0.11.exe](https://github.com/Lutra666/new/releases/download/v1.0.11/Aolong.Finance.System.Setup.1.0.11.exe) |
+| v1.0.10 | 2026-05-15 | [Release 说明](https://github.com/Lutra666/new/releases/tag/v1.0.10)（未上传安装包） |
 | v1.0.9 | 2026-05-14 | [Aolong Finance System Setup 1.0.9.exe](https://github.com/Lutra666/new/releases/download/v1.0.9/Aolong.Finance.System.Setup.1.0.9.exe) |
 | 历史版本 | — | [GitHub Releases](https://github.com/Lutra666/new/releases) |
 
-> **注意**：v1.0.10 安装包需在本地构建（`npm run dist:win`），或从 [Releases 页面](https://github.com/Lutra666/new/releases) 下载已上传的版本。v1.0.9 可直接下载安装。
+> **注意**：v1.0.11 与 v1.0.9 可直接下载安装。v1.0.10 未上传安装包，如需该版本可在本地构建（`npm run dist:win`）。
 
 ---
 ## 特色功能：AI 智能分析
