@@ -2,7 +2,6 @@
 
 面向批发零售企业的桌面级 ERP 财务管理软件，支持商品管理、采购销售、库存跟踪、财务记账等核心功能，**v1.0.9 起内置 AI 智能分析引擎**。基于 Electron 打包为 Windows 安装程序，开箱即用。
 
-> 在线体验：**[ahut615.top/finance](https://ahut615.top/finance)** &nbsp;|&nbsp; 账号 `admin` / 密码 `admin123`
 
 ---
 
