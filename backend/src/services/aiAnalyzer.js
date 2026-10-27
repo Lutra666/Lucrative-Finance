@@ -87,7 +87,7 @@ function gatherBusinessContext() {
 }
 
 function buildSystemPrompt(context, featureType) {
-  const base = `你是鳌龙财务管理系统的AI分析助手。你拥有企业当前所有业务数据的完整访问权限，可以分析财务状况、销售趋势、采购动态、库存水平等问题。
+  const base = `你是Lutra 财务管理系统的AI分析助手。你拥有企业当前所有业务数据的完整访问权限，可以分析财务状况、销售趋势、采购动态、库存水平等问题。
 
 ## 当前业务数据
 ${JSON.stringify(context, null, 2)}

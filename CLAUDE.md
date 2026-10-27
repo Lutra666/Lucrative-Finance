@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-鳌龙财务管理系统 (Aolong Finance System) — A React + Node.js finance/ERP application for wholesale/retail businesses. Packaged as both a web app and an Electron desktop app for Windows.
+Lutra 财务管理系统 (Lutra Finance System) — A React + Node.js finance/ERP application for wholesale/retail businesses. Packaged as both a web app and an Electron desktop app for Windows.
 
 There is an older copy of this project at `../备份/` (v1.0.0); this directory (`finance-system-backup`) is the current working version (v1.0.9).
 

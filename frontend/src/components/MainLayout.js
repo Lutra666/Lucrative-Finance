@@ -94,7 +94,7 @@ function MainLayout({ children, user, onLogout, developerMode = false, darkMode 
       >
         <div className="main-brand">
           <Text className={`main-brand-title ${collapsed ? 'is-collapsed' : ''}`} strong style={{ display: 'block', fontSize: 18 }}>
-            鳌龙财务系统
+            Lutra 财务管理系统
           </Text>
           <Text className={`main-brand-sub ${collapsed ? 'is-collapsed' : ''}`} type="secondary">
             智慧经营中枢

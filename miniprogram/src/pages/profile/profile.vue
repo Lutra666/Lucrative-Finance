@@ -39,7 +39,7 @@
     </view>
 
     <view class="footer">
-      <text class="version">鳌龙财务系统 v1.0.8</text>
+      <text class="version">Lutra 财务管理系统 v1.0.8</text>
     </view>
 
     <up-modal

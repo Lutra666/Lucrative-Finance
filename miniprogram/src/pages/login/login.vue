@@ -1,7 +1,7 @@
 <template>
   <view class="login-page">
     <view class="login-header">
-      <text class="login-title">鳌龙财务系统</text>
+      <text class="login-title">Lutra 财务管理系统</text>
       <text class="login-subtitle">批发零售企业管理手机端</text>
     </view>
 

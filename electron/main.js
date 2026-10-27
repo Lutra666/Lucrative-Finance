@@ -3,6 +3,11 @@ const fs = require('fs');
 const crypto = require('crypto');
 const { app, BrowserWindow, dialog } = require('electron');
 
+// Preserve the existing desktop data directory when changing the product name.
+if (app.isPackaged) {
+  app.setPath('userData', path.join(app.getPath('appData'), 'Aolong Finance System'));
+}
+
 let server;
 let mainWindow;
 

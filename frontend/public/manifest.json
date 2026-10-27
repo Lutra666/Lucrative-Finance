@@ -1,6 +1,6 @@
 {
-  "short_name": "Finance",
-  "name": "鳌龙财务管理系统",
+  "short_name": "Lutra",
+  "name": "Lutra 财务管理系统",
   "icons": [],
   "start_url": ".",
   "display": "standalone",

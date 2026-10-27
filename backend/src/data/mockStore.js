@@ -340,7 +340,7 @@ const getReportSummary = () => {
 // ---- 系统 ----
 
 const getSystemInfo = () => ({
-  appName: '鳌龙财务管理系统',
+  appName: 'Lutra 财务管理系统',
   mode: 'production',
   version: '1.0.9',
   features: ['正式版数据存储', '账号鉴权', '本地备份恢复', '操作审计'],
