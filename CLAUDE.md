@@ -4,13 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Lutra 财务管理系统 (Lutra Finance System) — A React + Node.js finance/ERP application for wholesale/retail businesses. Packaged as both a web app and an Electron desktop app for Windows.
+Lucrative Finance (Lucrative Financial Management System powered by AI) — A React + Node.js finance/ERP application for wholesale and retail businesses, with a web app, a Windows Electron desktop app, and a WeChat mini program. Existing application and installer display names may differ from the documentation name.
 
-There is an older copy of this project at `../备份/` (v1.0.0); this directory (`finance-system-backup`) is the current working version (v1.0.9).
+The repository root contains the launcher, desktop packaging, backend, frontend, and mini program.
 
 ## Common Commands
 
-All commands assume you are in the `finance-system-backup/` directory.
+Commands below assume the repository root unless otherwise indicated.
 
 **Start the full system (recommended):**
 ```bash
@@ -36,16 +36,14 @@ npm run start:gui
 ```bash
 cd backend
 npm start        # node src/server.js
-cd backend
-npm run dev      # nodemon src/server.js
+# Or, from backend/: npm run dev (nodemon)
 ```
 
 **Manual frontend:**
 ```bash
 cd frontend
 npm start        # react-scripts start
-cd frontend
-npm run build    # react-scripts build (output to frontend/build/)
+# Or, from frontend/: npm run build (output to frontend/build/)
 ```
 
 **Build Electron Windows installer:**
@@ -107,7 +105,7 @@ The frontend's `package.json` sets `"proxy": "http://127.0.0.1:3001"` for CRA de
 
 ## Important Notes
 
-- The `test/` directory at the project root is **not** a test suite — it contains a nested Git repository for unrelated web-design coursework. The backend's Jest configuration is in `backend/package.json`, but there are currently no test files.
+- Backend tests live in `backend/src/__tests__/`; Jest configuration is in `backend/jest.config.js`.
 - The frontend uses `react-scripts` (CRA); ejecting is not recommended unless absolutely necessary.
 - When running in local mode, data lives in `backend/data/mock-store.json` and backups in `backend/data/backups/`. Both are gitignored.
 - The root `package.json` is a workspace orchestrator; it has no runtime dependencies of its own, only `electron` and `electron-builder` as devDependencies.
