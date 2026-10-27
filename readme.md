@@ -1,6 +1,6 @@
-# Lutra 财务管理系统
+# Lutra财务系统
 
-面向批发零售企业的桌面级 ERP 财务管理软件，支持商品管理、采购销售、库存跟踪、财务记账等核心功能，**v1.0.9 起内置 AI 智能分析引擎**。基于 Electron 打包为 Windows 安装程序，开箱即用。
+Lutra财务系统是面向批发零售企业的财务与进销存管理软件，提供商品、采购、销售、库存和财务管理，并支持 AI 智能分析。项目包含 Web 端、Windows 桌面端和微信小程序端。
 
 
 ---
@@ -9,12 +9,12 @@
 
 | 版本 | 日期 | 下载 |
 |------|------|------|
-| **v1.0.11** (最新) | 2026-09-20 | [Aolong Finance System Setup 1.0.11.exe](https://github.com/Lutra666/new/releases/download/v1.0.11/Aolong.Finance.System.Setup.1.0.11.exe) |
+| **v1.0.11** (最新) | 2026-09-20 | [下载 Windows 安装包](https://github.com/Lutra666/new/releases/download/v1.0.11/Aolong.Finance.System.Setup.1.0.11.exe) |
 | v1.0.10 | 2026-05-15 | [Release 说明](https://github.com/Lutra666/new/releases/tag/v1.0.10)（未上传安装包） |
-| v1.0.9 | 2026-05-14 | [Aolong Finance System Setup 1.0.9.exe](https://github.com/Lutra666/new/releases/download/v1.0.9/Aolong.Finance.System.Setup.1.0.9.exe) |
+| v1.0.9 | 2026-05-14 | [下载 Windows 安装包](https://github.com/Lutra666/new/releases/download/v1.0.9/Aolong.Finance.System.Setup.1.0.9.exe) |
 | 历史版本 | — | [GitHub Releases](https://github.com/Lutra666/new/releases) |
 
-> **注意**：v1.0.11 与 v1.0.9 可直接下载安装。v1.0.10 未上传安装包，如需该版本可在本地构建（`npm run dist:win`）。
+> 历史安装包保留发布时的文件名及内部显示名称，下载地址不受本次文档改名影响。v1.0.10 未上传安装包，如需该版本请使用对应版本源码构建（`npm run dist:win`）。当前源码中的应用显示名也可能与文档名称不同。
 
 ---
 ## 特色功能：AI 智能分析
