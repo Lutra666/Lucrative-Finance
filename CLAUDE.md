@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Lutra财务系统 — A React + Node.js finance/ERP application for wholesale and retail businesses, with a web app, a Windows Electron desktop app, and a WeChat mini program. Existing application and installer display names may differ from the documentation name.
+Lucrative Finance (Lucrative Financial Management System powered by AI) — A React + Node.js finance/ERP application for wholesale and retail businesses, with a web app, a Windows Electron desktop app, and a WeChat mini program. Existing application and installer display names may differ from the documentation name.
 
 The repository root contains the launcher, desktop packaging, backend, frontend, and mini program.
 

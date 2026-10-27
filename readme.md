@@ -1,6 +1,6 @@
-# Lutra财务系统
+# Lucrative Finance
 
-Lutra财务系统是面向批发零售企业的财务与进销存管理软件，提供商品、采购、销售、库存和财务管理，并支持 AI 智能分析。项目包含 Web 端、Windows 桌面端和微信小程序端。
+Lucrative Finance（全名：Lucrative Financial Management System powered by AI）是面向批发零售企业的财务与进销存管理软件，提供商品、采购、销售、库存和财务管理，并支持 AI 智能分析。项目包含 Web 端、Windows 桌面端和微信小程序端。
 
 
 ---
