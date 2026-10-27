@@ -21,7 +21,7 @@
   },
   "build": {
     "appId": "com.aolong.finance",
-    "productName": "Aolong Finance System",
+    "productName": "Lutra Finance System",
     "directories": {
       "output": "dist"
     },

@@ -120,7 +120,7 @@
   },
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "鳌龙财务系统",
+    "navigationBarTitleText": "Lutra 财务管理系统",
     "navigationBarBackgroundColor": "#ffffff",
     "backgroundColor": "#f5f6fa"
   }

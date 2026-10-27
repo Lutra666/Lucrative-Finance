@@ -1,4 +1,4 @@
-# 鳌龙财务管理系统
+# Lutra 财务管理系统
 
 面向批发零售企业的桌面级 ERP 财务管理软件，支持商品管理、采购销售、库存跟踪、财务记账等核心功能，**v1.0.9 起内置 AI 智能分析引擎**。基于 Electron 打包为 Windows 安装程序，开箱即用。
 
@@ -168,6 +168,13 @@ npm start
 
 ---
 
+## 作者与提交者
+
+- 作者：Lutra666
+- 提交者：Lutra666
+
+---
+
 ## 许可
 
-MIT License · Copyright (c) 2026 鳌龙
+MIT License · Copyright (c) 2026 Lutra666

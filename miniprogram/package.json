@@ -2,7 +2,7 @@
   "name": "finance-miniapp",
   "version": "1.0.0",
   "private": true,
-  "description": "鳌龙财务管理系统 - 微信小程序版",
+  "description": "Lutra 财务管理系统 - 微信小程序版",
   "scripts": {
     "dev:mp-weixin": "uni -p mp-weixin",
     "build:mp-weixin": "uni build -p mp-weixin"
